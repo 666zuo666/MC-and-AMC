@@ -79,7 +79,7 @@ if st.button("Predict"):
     predicted_class = model.predict(features)[0]  
     predicted_proba = model.predict_proba(features)[0]  
   
-    st.write(f"**Predicted Label**: {predicted_class} (1: Others, 0: LPA)")  
+    st.write(f"**Predicted Label**: {predicted_class} (1: MC, 0: AMC)")  
     st.write(f"**Predicted Probability**: {predicted_proba}")  
   
     # probability = predicted_proba[predicted_class] * 100  
