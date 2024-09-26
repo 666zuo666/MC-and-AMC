@@ -36,7 +36,7 @@ st.title("Differentiating AMC and MC")
 import streamlit as st  
   
 # 用户输入  
-Radscore = st.number_input("Radscore:", min_value=-1.0, max_value=1.0, value=0.0, step=0.01)
+Radscore = st.number_input("Radscore:", min_value=-1.0, max_value=1.0, value=-1.0, step=0.01)
   
 # Clinical T stage 选项修正，格式化函数中的显示逻辑调整  
 Clinical_T_stage = st.selectbox("Clinical T stage:", options=[0, 1, 2, 3, 4], format_func=lambda x: ["cT2", "cT3", "cT4a", "cT4b", "Unknown"][x])  
