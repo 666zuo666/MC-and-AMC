@@ -29,7 +29,7 @@ feature_names = [
 ]  
   
 # Streamlit 用户界面  
-st.title("Differentiating AMC and MC")  
+st.title("An online calculator for differentiating AMC and MC.")  
   
 # 用户输入  
 # 导入Streamlit库（如果尚未导入）  
@@ -79,7 +79,7 @@ if st.button("Predict"):
     predicted_class = model.predict(features)[0]  
     predicted_proba = model.predict_proba(features)[0]  
   
-    st.write(f"**Predicted Label**: {predicted_class} (1: AMC, 0: MC)")  
+    st.write(f"**Predicted Label**: {predicted_class} (0: AMC, 1: MC)")  
     st.write(f"**Predicted Probability**: {predicted_proba}")  
   
     # probability = predicted_proba[predicted_class] * 100  
