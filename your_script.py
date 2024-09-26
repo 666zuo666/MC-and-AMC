@@ -19,7 +19,7 @@ feature_names = [
     "Age",  
     "Drinking_history",  
     "AFe 选项修正，格式化函数中的显示逻辑调整  
-Clinical_T_stage = st.selectbox("Clinical T stage:", options=[0, 1, 2, 3, 4], format_func=lambda x: ["cT2", "cT3", "cT4a", "cT4b", "Unknown"][x])  P",  
+Clinical_T_stage = st.selectbox("Clinical T stage:", options=[0, 1, 2, 3, 4], format_func=lambda x: ["cT1", "cT2", "cT3", "cT4a", "cT4b"][x])  P",  
     "PLT",  
     "ALB",  
     "MONO",  
