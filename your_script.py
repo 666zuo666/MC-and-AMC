@@ -18,8 +18,7 @@ feature_names = [
     "Location",  
     "Age",  
     "Drinking_history",  
-    "AFe 选项修正，格式化函数中的显示逻辑调整  
-Clinical_T_stage = st.selectbox("Clinical T stage:", options=[0, 1, 2, 3, 4], format_func=lambda x: ["cT1", "cT2", "cT3", "cT4a", "cT4b"][x])  P",  
+    "AFP",  
     "PLT",  
     "ALB",  
     "MONO",  
@@ -80,7 +79,7 @@ if st.button("Predict"):
     predicted_class = model.predict(features)[0]  
     predicted_proba = model.predict_proba(features)[0]  
   
-    st.write(f"**Predicted Label**: {predicted_class} (1: MC, 0: AMC)")  
+    st.write(f"**Predicted Label**: {predicted_class} (1: Others, 0: LPA)")  
     st.write(f"**Predicted Probability**: {predicted_proba}")  
   
     # probability = predicted_proba[predicted_class] * 100  
@@ -99,15 +98,15 @@ if st.button("Predict"):
     # st.write(advice)  
   
       # SHAP 解释  
-      # st.subheader("SHAP Force Plot Explanation")  
-      # explainer_shap = shap.TreeExplainer(model)  
-      # shap_values = explainer_shap.shap_values(pd.DataFrame([feature_values], columns=feature_names))  
-      # shap.initjs()  
-      # shap.force_plot(explainer_shap.expected_value[predicted_class], shap_values[predicted_class], pd.DataFrame([feature_values], columns=feature_names))  
+      st.subheader("SHAP Force Plot Explanation")  
+      explainer_shap = shap.TreeExplainer(model)  
+      shap_values = explainer_shap.shap_values(pd.DataFrame([feature_values], columns=feature_names))  
+      shap.initjs()  
+      shap.force_plot(explainer_shap.expected_value[predicted_class], shap_values[predicted_class], pd.DataFrame([feature_values], columns=feature_names))  
     
-      # # LIME 解释  
-      # st.subheader("LIME Explanation")  
-      # lime_explainer = LimeTabularExplainer(X_test.values, feature_names=feature_names, class_names=['LPA', 'Others'], mode='classification')  
-      # lime_exp = lime_explainer.explain_instance(features.flatten(), predict_fn=model.predict_proba)  
-      # lime_html = lime_exp.as_html(show_table=False)  
-      # st.write(lime_html, unsafe_allow_html=True)  # 使用 st.write 显示 HTML，并设置 unsafe_allow_html=True（如果 HTML 是安全的）
+      # LIME 解释  
+      st.subheader("LIME Explanation")  
+      lime_explainer = LimeTabularExplainer(X_test.values, feature_names=feature_names, class_names=['LPA', 'Others'], mode='classification')  
+      lime_exp = lime_explainer.explain_instance(features.flatten(), predict_fn=model.predict_proba)  
+      lime_html = lime_exp.as_html(show_table=False)  
+      st.write(lime_html, unsafe_allow_html=True)  # 使用 st.write 显示 HTML，并设置 unsafe_allow_html=True（如果 HTML 是安全的）
