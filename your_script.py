@@ -105,8 +105,8 @@ if st.button("Predict"):
       # shap.force_plot(explainer_shap.expected_value[predicted_class], shap_values[predicted_class], pd.DataFrame([feature_values], columns=feature_names))  
     
       # # LIME 解释  
-      st.subheader("LIME Explanation")  
-      lime_explainer = LimeTabularExplainer(X_test.values, feature_names=feature_names, class_names=['LPA', 'Others'], mode='classification')  
-      lime_exp = lime_explainer.explain_instance(features.flatten(), predict_fn=model.predict_proba)  
-      lime_html = lime_exp.as_html(show_table=False)  
-      st.write(lime_html, unsafe_allow_html=True)  # 使用 st.write 显示 HTML，并设置 unsafe_allow_html=True（如果 HTML 是安全的）
+      # st.subheader("LIME Explanation")  
+      # lime_explainer = LimeTabularExplainer(X_test.values, feature_names=feature_names, class_names=['LPA', 'Others'], mode='classification')  
+      # lime_exp = lime_explainer.explain_instance(features.flatten(), predict_fn=model.predict_proba)  
+      # lime_html = lime_exp.as_html(show_table=False)  
+      # st.write(lime_html, unsafe_allow_html=True)  # 使用 st.write 显示 HTML，并设置 unsafe_allow_html=True（如果 HTML 是安全的）
