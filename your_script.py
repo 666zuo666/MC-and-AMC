@@ -39,7 +39,11 @@ import streamlit as st
 Radscore = st.number_input("Radscore:", min_value=-1.0, max_value=1.0, value=-0.50, step=0.01)
   
 # Clinical T stage 选项修正，格式化函数中的显示逻辑调整  
-Clinical_T_stage = st.selectbox("Clinical T stage:", options=[0, 1, 2, 3, 4], format_func=lambda x: ["cT1", "cT2", "cT3", "cT4a", "cT4b"][x])  
+Clinical_T_stage = st.selectbox(
+    "Clinical T stage:",
+    options=[0, 1, 2, 3],
+    format_func=lambda x: ["cT2", "cT3", "cT4a", "cT4b"][x]
+) 
   
 # Clinical N stage 选项和格式化函数正常  
 Clinical_N_stage = st.selectbox("Clinical N stage:", options=[0, 1], format_func=lambda x: "cN0" if x == 0 else "cN+")  
